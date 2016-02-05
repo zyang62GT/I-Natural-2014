@@ -1,0 +1,65 @@
+A simple program to test and record the resistance of sensors.
+
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+}
+int counter=0;
+int sensorValue0;
+int sensorValue1;
+int sensorValue2;
+int sensorValue3;
+int v0min=0;
+int v0max=0;
+int v1min=0;
+int v1max=0;
+int v2min=0;
+int v2max=0;
+int v3min=0;
+int v3max=0;
+// the loop routine runs over and over again forever:
+void loop() {
+  // read the input on analog pin 0:
+if(count<2000){
+  sensorValue0 = analogRead(A0);
+  sensorValue1 = analogRead(A1);
+  sensorValue2 = analogRead(A2);
+  sensorValue3 = analogRead(A3);
+if(sensorValue0>v0max)
+    v0max=sensorValue0;
+if(sensorValue0<v0min)
+    v0min=sensorValue0;
+if(sensorValue1>v1max)
+    v1max=sensorValue1;
+if(sensorValue1<v1min)
+    v1min=sensorValue1;
+if(sensorValue2>v2max)
+    v2max=sensorValue2;
+if(sensorValue2<v2min)
+    v2min=sensorValue2;
+if(sensorValue3>v3max)
+    v3max=sensorValue3;
+if(sensorValue3<v3min)
+    v3min=sensorValue3;
+
+  // print out the value you read:
+  Serial.println(sensorValue0);
+  Serial.println(sensorValue1);
+  Serial.println(sensorValue2);
+  Serial.println(sensorValue3);
+  count++;
+}
+  if(count>=2000){
+  Serial.println(v0max);
+  Serial.println(v1max);
+  Serial.println(v2max);
+  Serial.println(v3max);
+  Serial.println(v0min);
+  Serial.println(v1min);
+  Serial.println(v2min);
+  Serial.println(v3min);
+
+
+  }
+
+}
